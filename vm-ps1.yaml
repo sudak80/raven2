@@ -1,0 +1,49 @@
+apiVersion: kubevirt.io/v1
+kind: VirtualMachine
+metadata:
+  labels:
+    kubevirt.io/vm: vm-ps1
+  name: vm-ps1
+spec:
+  dataVolumeTemplates:
+  - metadata:
+      name: ps1-dv
+    spec:
+      pvc:
+        accessModes:
+        - ReadWriteOnce
+        resources:
+          requests:
+            storage: 40Gi
+        storageClassName: hostpath-provisioner
+      source:
+        http:
+          url: "http://10.216.250.210:8008/PxPS-3604.qcow2"
+          secretRef: ""
+          certConfigMap: ""
+    status: {}
+  running: true
+  template:
+    metadata:
+      labels:
+        kubevirt.io/vm: vm-ps1
+    spec:
+      nodeSelector:
+        kubernetes.io/hostname: "ocp-node03"
+      domain:
+        devices:
+          disks:
+          - disk:
+              bus: virtio
+            name: datavolumedisk40
+        machine:
+        resources:
+          requests:
+            memory: 8Gi
+      terminationGracePeriodSeconds: 180
+      volumes:
+      - dataVolume:
+          name: ps1-dv
+        name: datavolumedisk40
+status: {}
+

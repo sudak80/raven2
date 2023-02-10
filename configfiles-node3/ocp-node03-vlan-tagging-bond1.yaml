@@ -1,0 +1,36 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: vlan-tagging-between-bond1-bond1.251-on-ocp-node03
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: "ocp-node03"
+  desiredState:
+    interfaces:
+    - name: bond1.250
+      description: All Management traffic VLAN 250 using bond1
+      type: vlan
+      state: up
+      ipv4:
+        enabled: false
+      vlan:
+        base-iface: bond1
+        id: 250
+    - name: bond1.251
+      description: SIO-Data1 VLAN 251 using bond1
+      type: vlan
+      state: up
+      ipv4:
+        enabled: false
+      vlan:
+        base-iface: bond1
+        id: 251
+    - name: bond1.252
+      description: SIO-Data2 VLAN 252 using bond1
+      type: vlan
+      state: up
+      ipv4:
+        enabled: false
+      vlan:
+        base-iface: bond1
+        id: 252
