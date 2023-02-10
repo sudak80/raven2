@@ -16,6 +16,24 @@ spec:
       vlan:
         base-iface: bond1
         id: 250
+    - name: bond1.251
+      description: SIO-Data1 VLAN 251 using bond1
+      type: vlan
+      state: up
+      ipv4:
+        enabled: false
+      vlan:
+        base-iface: bond1
+        id: 251
+    - name: bond1.252
+      description: SIO-Data2 VLAN 252 using bond1
+      type: vlan
+      state: up
+      ipv4:
+        enabled: false
+      vlan:
+        base-iface: bond1
+        id: 252
     - name: bond1.139
       description: iDRAC HW Mgmt VLAN 139 using bond1
       type: vlan

@@ -52,5 +52,3 @@ spec:
               enabled: false
           port:
             - name: bond1.204
-
-
