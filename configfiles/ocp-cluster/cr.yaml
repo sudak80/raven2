@@ -1,3 +1,4 @@
+#custom resource
 apiVersion: hostpathprovisioner.kubevirt.io/v1beta1
 kind: HostPathProvisioner
 metadata:
