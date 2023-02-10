@@ -1,0 +1,68 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ocp-node1-bond1-vlans
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: "ocp-node1"
+  desiredState:
+    interfaces:
+    - name: eno3
+      description: Ethernet ens2f0
+      type: ethernet
+      state: up
+      ipv4:
+        enabled: false
+      mtu: 1500
+    - name: eno4
+      description: Ethernet ens2f1
+      type: ethernet
+      state: up
+      ipv4:
+        enabled: false
+      mtu: 1500
+    - name: bond1
+      description: Bond using ports ens2f0 and ens2f1
+      type: bond
+      state: up
+      ipv4:
+        enabled: false
+      link-aggregation:
+        mode: 802.3ad
+        options:
+          miimon: '100'
+        port:
+        - eno3
+        - eno4
+      mtu: 1500
+    - name: br-250
+      description: Hypervisor Mgmt Bridge on VLAN250 using bond0
+      type: linux-bridge
+      state: up
+      ipv4:
+        address:
+        - ip: 10.216.250.180
+          prefix-length: 24
+        enabled: true
+      bridge:
+        options:
+          stp:
+            enabled: false
+        port:
+          - name: bond0
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-config-250
+  annotations:
+spec:
+  config: '{
+    "cniVersion": "0.3.1",
+    "name": "nad-config-250",
+    "type": "cnv-bridge",
+    "bridge": "br-250",
+    "macspoofchk": true,
+    "mtu": 1500
+}'
+---

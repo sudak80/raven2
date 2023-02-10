@@ -1,0 +1,56 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: ocp-node02-bridges
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: "ocp-node02"
+  desiredState:
+    interfaces:
+      - name: br250
+        description: Linux bridge with bond1.250 as a port
+        type: linux-bridge
+        state: up
+        ipv4:
+          address:
+          - ip: 10.216.250.207
+            prefix-length: 24
+          enabled: true
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: bond1.250
+      - name: br251
+        description: Linux bridge with bond1.251 as a port
+        type: linux-bridge
+        state: up
+        ipv4:
+          address:
+          - ip: 10.216.251.182
+            prefix-length: 24
+          enabled: true
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: bond1.251
+      - name: br252
+        description: Linux bridge with bond1.252 as a port
+        type: linux-bridge
+        state: up
+        ipv4:
+          address:
+          - ip: 10.216.252.182
+            prefix-length: 24
+          enabled: true
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: bond1.252
+
+

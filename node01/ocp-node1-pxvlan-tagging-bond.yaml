@@ -1,0 +1,19 @@
+apiVersion: nmstate.io/v1
+kind: NodeNetworkConfigurationPolicy
+metadata:
+  name: vlan-tagging-pxnetworks-on-ocp-node1-bond1-interface
+spec:
+  nodeSelector:
+    kubernetes.io/hostname: "ocp-node1"
+  desiredState:
+    interfaces:
+    - name: bond1.250
+      description: SIO-Data1 VLAN 250 using bond1
+      type: vlan
+      state: up
+      ipv4:
+        enabled: false
+      vlan:
+        base-iface: bond1
+        id: 250
+

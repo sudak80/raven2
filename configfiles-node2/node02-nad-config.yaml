@@ -1,0 +1,46 @@
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-node02-250
+  annotations:
+spec:
+  config: '{
+    "cniVersion": "0.3.1",
+    "name": "nad-node02-250",
+    "type": "cnv-bridge",
+    "bridge": "br250",
+    "macspoofchk": true,
+    "mtu": 9000
+}'
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-node02-251
+  annotations:
+spec:
+  config: '{
+    "cniVersion": "0.3.1",
+    "name": "nad-node02-251",
+    "type": "cnv-bridge",
+    "bridge": "br251",
+    "macspoofchk": true,
+    "mtu": 9000
+}'
+---
+apiVersion: "k8s.cni.cncf.io/v1"
+kind: NetworkAttachmentDefinition
+metadata:
+  name: nad-node02-252
+  annotations:
+spec:
+  config: '{
+    "cniVersion": "0.3.1",
+    "name": "nad-node02-252",
+    "type": "cnv-bridge",
+    "bridge": "br252",
+    "macspoofchk": true,
+    "mtu": 9000
+}'
+---
+
