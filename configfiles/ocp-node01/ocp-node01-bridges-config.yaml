@@ -8,7 +8,7 @@ spec:
   desiredState:
     interfaces:
       - name: br250
-        description: Linux bridge with bond1.250 as a port
+        description: Linux bridge between bond1.250 and br250
         type: linux-bridge
         state: up
         ipv4:
@@ -23,7 +23,7 @@ spec:
           port:
             - name: bond1.250
       - name: br139
-        description: Linux bridge with bond1.251 as a port
+        description: Linux bridge between bond1.139 and br139
         type: linux-bridge
         state: up
         ipv4:
@@ -38,7 +38,7 @@ spec:
           port:
             - name: bond1.139
       - name: br204
-        description: Linux bridge with bond1.252 as a port
+        description: Linux bridge between bond1.204 and br204
         type: linux-bridge
         state: up
         ipv4:
