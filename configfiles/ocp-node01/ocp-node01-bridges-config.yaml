@@ -13,7 +13,7 @@ spec:
         state: up
         ipv4:
           address:
-          - ip: 10.216.250.206
+          - ip: 10.216.250.204
             prefix-length: 24
           enabled: true
         bridge:
@@ -28,7 +28,7 @@ spec:
         state: up
         ipv4:
           address:
-          - ip: 192.168.139.250
+          - ip: 192.168.139.240
             prefix-length: 24
           enabled: true
         bridge:
