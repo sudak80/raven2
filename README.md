@@ -1,2 +1,2 @@
 # raven2
-raven2 (OpenShift) files
+raven2 (OpenShift) deployment configuration files
