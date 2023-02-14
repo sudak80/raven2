@@ -27,28 +27,27 @@ interfaces:
         - eno1
         - eno2
     mtu: 1500
-  - name: bond0.250
-    description: vlan250 using bond0
+  - name: bond0.205
+    description: vlan205 using bond0
     type: vlan
     state: up
     ipv4:
       address:
-        - ip: 10.216.250.201
+        - ip: 10.216.205.226
           prefix-length: 24
       enabled: true
     vlan:
       base-iface: bond0
-      id: 250
+      id: 205
     mtu: 1500
 routes:
   config:
     - destination: 0.0.0.0/0
-      next-hop-address: 10.216.250.254
-      next-hop-interface: bond0.250
+      next-hop-address: 10.216.205.254
+      next-hop-interface: bond0.205
 dns-resolver:
   config:
     search:
       - pod2.local
     server:
       - 10.216.205.111
-      - 10.209.24.254
