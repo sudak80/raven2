@@ -1,0 +1,54 @@
+interfaces:
+  - name: eno1
+    description: Ethernet eno1
+    type: ethernet
+    state: up
+    ipv4:
+      enabled: false
+    mtu: 1500
+  - name: eno2
+    description: Ethernet eno2
+    type: ethernet
+    state: up
+    ipv4:
+      enabled: false
+    mtu: 1500
+  - name: bond0
+    description: Bond with ports eno1 and eno2
+    type: bond
+    state: up
+    ipv4:
+      enabled: false
+    link-aggregation:
+      mode: 802.3ad
+      options:
+        miimon: '100'
+      port:
+        - eno1
+        - eno2
+    mtu: 1500
+  - name: bond0.250
+    description: vlan250 using bond0
+    type: vlan
+    state: up
+    ipv4:
+      address:
+        - ip: 10.216.250.201
+          prefix-length: 24
+      enabled: true
+    vlan:
+      base-iface: bond0
+      id: 250
+    mtu: 1500
+routes:
+  config:
+    - destination: 0.0.0.0/0
+      next-hop-address: 10.216.250.254
+      next-hop-interface: bond0.250
+dns-resolver:
+  config:
+    search:
+      - pod2.local
+    server:
+      - 10.216.205.111
+      - 10.209.24.254
