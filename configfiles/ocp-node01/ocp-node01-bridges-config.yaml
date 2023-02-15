@@ -22,6 +22,36 @@ spec:
               enabled: false
           port:
             - name: bond1.250
+      - name: br250
+        description: Linux bridge between bond1.250 and br250
+        type: linux-bridge
+        state: up
+        ipv4:
+          address:
+            - ip: 10.216.250.206
+              prefix-length: 24
+          enabled: true
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: bond1.250
+      - name: br250
+        description: Linux bridge between bond1.250 and br250
+        type: linux-bridge
+        state: up
+        ipv4:
+          address:
+            - ip: 10.216.250.206
+              prefix-length: 24
+          enabled: true
+        bridge:
+          options:
+            stp:
+              enabled: false
+          port:
+            - name: bond1.250
       - name: br139
         description: Linux bridge between bond1.139 and br139
         type: linux-bridge
