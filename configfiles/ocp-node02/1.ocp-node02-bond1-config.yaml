@@ -22,4 +22,3 @@ spec:
         - eno3
         - eno4
       mtu: 9000
-

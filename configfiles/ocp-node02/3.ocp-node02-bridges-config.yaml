@@ -1,10 +1,10 @@
 apiVersion: nmstate.io/v1
 kind: NodeNetworkConfigurationPolicy
 metadata:
-  name: ocp-node01-bridges
+  name: ocp-node02-bridges
 spec:
   nodeSelector:
-    kubernetes.io/hostname: "ocp-node01"
+    kubernetes.io/hostname: "ocp-node02"
   desiredState:
     interfaces:
       - name: br250
@@ -13,7 +13,7 @@ spec:
         state: up
         ipv4:
           address:
-          - ip: 10.216.250.206
+          - ip: 10.216.250.207
             prefix-length: 24
           enabled: true
         bridge:
@@ -22,44 +22,44 @@ spec:
               enabled: false
           port:
             - name: bond1.250
-      - name: br250
-        description: Linux bridge between bond1.250 and br250
+      - name: br251
+        description: Linux bridge between bond1.251 and br251
         type: linux-bridge
         state: up
         ipv4:
           address:
-            - ip: 10.216.250.206
-              prefix-length: 24
+          - ip: 10.216.251.182
+            prefix-length: 24
           enabled: true
         bridge:
           options:
             stp:
               enabled: false
           port:
-            - name: bond1.250
-      - name: br250
-        description: Linux bridge between bond1.250 and br250
+            - name: bond1.251
+      - name: br252
+        description: Linux bridge between bond1.252 and br252
         type: linux-bridge
         state: up
         ipv4:
           address:
-            - ip: 10.216.250.206
-              prefix-length: 24
+          - ip: 10.216.252.182
+            prefix-length: 24
           enabled: true
         bridge:
           options:
             stp:
               enabled: false
           port:
-            - name: bond1.250
+            - name: bond1.252
       - name: br139
         description: Linux bridge between bond1.139 and br139
         type: linux-bridge
         state: up
         ipv4:
           address:
-          - ip: 192.168.139.240
-            prefix-length: 24
+            - ip: 192.168.139.241
+              prefix-length: 24
           enabled: true
         bridge:
           options:
@@ -73,8 +73,8 @@ spec:
         state: up
         ipv4:
           address:
-          - ip: 10.216.204.15
-            prefix-length: 24
+            - ip: 10.216.204.16
+              prefix-length: 24
           enabled: true
         bridge:
           options:
@@ -82,3 +82,6 @@ spec:
               enabled: false
           port:
             - name: bond1.204
+
+
+
