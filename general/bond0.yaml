@@ -51,3 +51,4 @@ dns-resolver:
       - pod2.local
     server:
       - 10.216.205.111
+      - 10.209.24.254
