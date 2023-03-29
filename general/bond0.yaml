@@ -1,3 +1,4 @@
+# YAML file for creating bond0 network interface
 interfaces:
   - name: eno1
     description: Ethernet eno1
@@ -14,7 +15,7 @@ interfaces:
       enabled: false
     mtu: 1500
   - name: bond0
-    description: Bond with ports eno1 and eno2
+    description: Bond0 with ports eno1 and eno2
     type: bond
     state: up
     ipv4:
