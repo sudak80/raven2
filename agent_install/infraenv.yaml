@@ -1,0 +1,15 @@
+apiVersion: agent-install.openshift.io/v1beta1
+kind: InfraEnv
+metadata:
+  name: raven2
+  namespace: raven2
+spec:
+  pullSecretRef:
+    name: pull-secret
+  clusterRef:
+    name: raven2
+    namespace: raven2
+  sshAuthorizedKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDG+jOBOm2cpU67PFSE2DLLKuE0UBxPLj2NY+AaMiGKNsjkvmB1ZDK0AM0FzFkQE3yOASN5KnWE0psG8zi8SzkHDpMj0uaQz4Ni6xnOHc9C5PjZXwjSRnLyPRTtIW8qI/UVETph1Xu25e4mkJsZzA4mJvpy/+XJ9maXo559KDV26S8Q98pb89TjmxKPZV4TrsuK43xbc/+V/rWd9ZcTcDFrfbFESnCO5njabuVNo/Ss+pHu7PRJiy4sqPKA5CW7I+/swJc+eSZHr5qiNImbu6Aw/oiHEUzxNAWdwYpfXeE94YbgaY9r3GZAcoeHn+v8xKeSL+g6dih+nVZMxlkkeQOHU1O9QwtW3vWFbdsewFnZOm40wCg4pbDf+M1UpoTvTdm74WfXMDHX6tonqbISt4pZYy5+DeZvxNJ7KFZQaSX5kJyQl0B6MfEib9n8CutispMNk8RQxWsAQ9DOL52KDziqdspedi6wCBDXzGaFGhGIPjB1phA1/2fXP/G4ZNshG+k= corp\fortns@W1036DMDL3
+  nmStateConfigLabelSelector:
+    matchLabels:
+      cluster-name: raven2

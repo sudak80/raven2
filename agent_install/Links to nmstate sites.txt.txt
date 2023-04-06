@@ -1,0 +1,11 @@
+https://nmstate.io/user/quick_guide.html
+https://nmstate.io/nmpolicy/examples.html
+https://github.com/nmstate/kubernetes-nmstate/blob/main/docs/examples/bond-vlan.yaml
+https://docs.openshift.com/container-platform/4.12/installing/installing_with_agent_based_installer/preparing-to-install-with-agent-based-installer.html
+https://docs.openshift.com/container-platform/4.12/installing/disconnected_install/installing-mirroring-installation-images.html#installation-about-mirror-registry_installing-mirroring-installation-images
+
+https://console.redhat.com/openshift/install/metal/agent-based
+
+https://github.com/geertn444/npp-yaml
+
+

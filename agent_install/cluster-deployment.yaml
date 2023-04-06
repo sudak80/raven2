@@ -1,0 +1,23 @@
+apiVersion: hive.openshift.io/v1
+kind: ClusterDeployment
+metadata:
+  name: raven2
+  namespace: raven2
+spec:
+  baseDomain: pod2.local
+  installed: false
+  clusterInstallRef:
+    group: extensions.hive.openshift.io
+    kind: AgentClusterInstall
+    name: raven2
+    version: v1beta1
+  clusterName: raven2
+  controlPlaneConfig:
+    servingCertificates: {}
+  platform:
+    agentBareMetal:
+      agentSelector:
+        matchLabels:
+          cluster-name: raven2
+  pullSecretRef:
+    name: pull-secret
