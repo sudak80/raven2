@@ -1,0 +1,24 @@
+apiVersion: extensions.hive.openshift.io/v1beta1
+kind: AgentClusterInstall
+metadata:
+  name: raven2
+  namespace: raven2
+  annotations:
+    agent-install.openshift.io/install-config-overrides: '{"networking":{"networkType":"OVNKubernetes"},{"fips": True}}'
+spec:
+  clusterDeploymentRef:
+    name: raven2
+  imageSetRef:
+    name: openshift-4.12
+  apiVIP: 10.216.205.204
+  ingressVIP: 10.216.205.205
+  networking:
+    networkType: OVNKubernetes
+    clusterNetwork:
+    - cidr: 10.128.0.0/14
+      hostPrefix: 23
+    serviceNetwork:
+    - 172.30.0.0/16
+  provisionRequirements:
+    controlPlaneAgents: 3
+  sshPublicKey: ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCzr6sDaMIMECnTFgjTaCN6lUsUz5FhWfLgRt+s3GGoRSdAYvzOqQCeXd9xpDnxPnfhL7kviVcD5GVEug0tTSJjF82umAjEvtg5YlQB6hdiXCWFzR+3OyZR1alfKPchwBzd8I7jI2g0GiMo/tSXOZ15O3+K8mTZD6TYvl5kJd2kITz7zbuqxc3YogVhMcsfm0VdAliTIpmy6vM9R6LSUSRNvTfKd+6oEmxYuDEdcg8GZv+d93kS7i1iIh2O0N7zF4o+zju8ngLd8KwlG99hOMU/TiJzM7T1VSPStrctYBgYf2IhzwnkDyCU9Sv6P3V3JwYjHk/zWRqz43fjYlHvojbx rsa-key-20221122
