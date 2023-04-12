@@ -1,0 +1,145 @@
+apiVersion: v1alpha1
+kind: AgentConfig
+rendezvousIP: 10.216.205.226
+hosts:
+  - hostname: openshift01.pod2.local
+    role: master
+    interfaces:
+      - name: eno1
+        macAddress: 78:ac:44:0c:aa:a0
+      - name: eno2
+        macAddress: 78:ac:44:0c:aa:a1
+    networkConfig:
+      interfaces:
+        - name: bond0.205
+          type: vlan
+          state: up
+          vlan:
+            base-iface: bond0
+            id: 205
+          ipv4:
+            enabled: true
+            address:
+              - ip: 10.216.205.226
+                prefix-length: 24
+            dhcp: false
+        - name: bond0
+          type: bond
+          state: up
+          mac-address: 78:ac:44:0c:aa:a0
+          ipv4:
+            enabled: false
+          ipv6:
+            enabled: false
+          link-aggregation:
+            mode: active-backup
+            options:
+              miimon: "150"
+            port:
+              - eno1
+              - eno2
+      dns-resolver:
+        config:
+          server:
+            - 10.216.105.111
+            - 10.209.24.254
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 10.216.205.254
+            next-hop-interface: bond0.205
+            table-id: 254
+  - hostname: openshift02.pod2.local
+    role: master
+    interfaces:
+      - name: eno1
+        macAddress: e4:43:4b:73:1f:e0
+      - name: eno2
+        macAddress: e4:43:4b:73:1f:e1
+    networkConfig:
+      interfaces:
+        - name: bond0.205
+          type: vlan
+          state: up
+          vlan:
+            base-iface: bond0
+            id: 205
+          ipv4:
+            enabled: true
+            address:
+              - ip: 10.216.205.227
+                prefix-length: 24
+            dhcp: false
+        - name: bond0
+          type: bond
+          state: up
+          mac-address: e4:43:4b:73:1f:e0
+          ipv4:
+            enabled: false
+          ipv6:
+            enabled: false
+          link-aggregation:
+            mode: active-backup
+            options:
+              miimon: "150"
+            port:
+              - eno1
+              - eno2
+      dns-resolver:
+        config:
+          server:
+            - 10.216.105.111
+            - 10.209.24.254
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 10.216.205.254
+            next-hop-interface: bond0.205
+            table-id: 254
+  - hostname: openshift03.pod2.local
+    role: master
+    interfaces:
+      - name: eno1
+        macAddress: e4:43:4b:73:22:30
+      - name: eno2
+        macAddress: e4:43:4b:73:22:31
+    networkConfig:
+      interfaces:
+        - name: bond0.205
+          type: vlan
+          state: up
+          vlan:
+            base-iface: bond0
+            id: 205
+          ipv4:
+            enabled: true
+            address:
+              - ip: 10.216.205.228
+                prefix-length: 24
+            dhcp: false
+        - name: bond0
+          type: bond
+          state: up
+          mac-address: e4:43:4b:73:22:30
+          ipv4:
+            enabled: false
+          ipv6:
+            enabled: false
+          link-aggregation:
+            mode: active-backup
+            options:
+              miimon: "150"
+            port:
+              - eno1
+              - eno2
+      dns-resolver:
+        config:
+          server:
+            - 10.216.105.111
+            - 10.209.24.254
+      routes:
+        config:
+          - destination: 0.0.0.0/0
+            next-hop-address: 10.216.205.254
+            next-hop-interface: bond0.205
+            table-id: 254
